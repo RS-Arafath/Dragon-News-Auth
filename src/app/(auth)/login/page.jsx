@@ -42,8 +42,9 @@ const LogInPage = () => {
     //   reset(); //
     // }
   };
-console.log(errors, 'error');
+//console.log(errors, 'error');
 console.log(watch('email'));
+console.log(watch('password'));
   return (
     <div className="container mx-auto  flex justify-center items-center my-6 sm:my-8 lg:my-10">
       <div className="p-2 sm:p-8  rounded-xl  bg-slate-100">
