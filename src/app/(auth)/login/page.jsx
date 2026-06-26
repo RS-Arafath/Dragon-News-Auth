@@ -7,12 +7,13 @@ const LogInPage = () => {
   const {
     register,
     handleSubmit,
-   
+    reset,
+   watch,
     formState: { errors },
   } = useForm();
   const handleFormSubmit = (data) => {
     console.log(data);
-    console.log(errors,'error');
+    
     // e.preventDefault();
 
     // const email = e.target.email.value;
@@ -41,7 +42,8 @@ const LogInPage = () => {
     //   reset(); //
     // }
   };
-
+console.log(errors, 'error');
+console.log(watch('email'));
   return (
     <div className="container mx-auto  flex justify-center items-center my-6 sm:my-8 lg:my-10">
       <div className="p-2 sm:p-8  rounded-xl  bg-slate-100">
@@ -56,13 +58,17 @@ const LogInPage = () => {
 
               <label className="label font-semibold">Email</label>
               <input
-                {...register('email')}
-                required
+                {...register('email', { required: 'Email is required' })}
+             
                 type="email"
                 className="input w-full"
                 placeholder="Email"
               />
-
+              {errors.email && (
+                <p className="text-red-600 text-left italic">
+                  {errors.email.message}
+                </p>
+              )}
               <label className="label font-semibold">Password</label>
               <input
                 {...register('password', { required: 'Password is required' })}
@@ -70,8 +76,11 @@ const LogInPage = () => {
                 className="input w-full"
                 placeholder="Password"
               />
-          {errors.password && <p className='text-red-600 text-left'>{errors.password.message}
-          </p>}
+              {errors.password && (
+                <p className="text-red-600 text-left italic">
+                  {errors.password.message}
+                </p>
+              )}
 
               <button className="btn btn-neutral mt-4">Login</button>
             </fieldset>
