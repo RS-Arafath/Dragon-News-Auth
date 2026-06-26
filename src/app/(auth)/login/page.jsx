@@ -8,12 +8,12 @@ const LogInPage = () => {
     register,
     handleSubmit,
     reset,
-   watch,
+    watch,
     formState: { errors },
   } = useForm();
   const handleFormSubmit = (data) => {
     console.log(data);
-    
+
     // e.preventDefault();
 
     // const email = e.target.email.value;
@@ -42,9 +42,9 @@ const LogInPage = () => {
     //   reset(); //
     // }
   };
-//console.log(errors, 'error');
-console.log(watch('email'));
-console.log(watch('password'));
+  //console.log(errors, 'error');
+  console.log(watch('email'));
+  console.log(watch('password'));
   return (
     <div className="container mx-auto  flex justify-center items-center my-6 sm:my-8 lg:my-10">
       <div className="p-2 sm:p-8  rounded-xl  bg-slate-100">
@@ -60,7 +60,6 @@ console.log(watch('password'));
               <label className="label font-semibold">Email</label>
               <input
                 {...register('email', { required: 'Email is required' })}
-             
                 type="email"
                 className="input w-full"
                 placeholder="Email"
