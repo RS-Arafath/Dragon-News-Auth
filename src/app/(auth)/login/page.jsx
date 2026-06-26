@@ -1,34 +1,39 @@
 'use client';
 import Link from 'next/link';
 import React from 'react';
+import { useForm } from 'react-hook-form';
 
 const LogInPage = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const {register,handleSubmit,reset,formState:{errors}}=useForm()
+  const handleFormSubmit = (data) => {
+    console.log(data);
+    console.log(errors);
+    // e.preventDefault();
 
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    console.log(email, password);
-    if (password.length < 8) {
-      alert('Password must be at least 8 characters');
-      return;
-    }
+    // const email = e.target.email.value;
+    // const password = e.target.password.value;
+    // console.log(email, password);
+//  if (data.password.length < 6) {
+//    alert('Password must be at least 8 characters');
+//    return;
+//  }
 
-    if (!/[A-Z]/.test(password)) {
-      alert('Password must contain at least one uppercase letter');
-      return;
-    }
+//  if (!/[A-Z]/.test(data.password)) {
+//    alert('Password must contain at least one uppercase letter');
+//    return;
+//  }
 
-    if (!/[0-9]/.test(password)) {
-      alert('Password must contain at least one number');
-      return;
-    }
+//  if (!/[0-9]/.test(data.password)) {
+//    alert('Password must contain at least one number');
+//    return;
+//  }
 
     alert('Login Success');
-    const success = true; //if login succesfull
+
+    const success = true;
 
     if (success) {
-      e.target.reset(); // Form reset
+      reset(); // 
     }
   };
 
@@ -40,13 +45,13 @@ const LogInPage = () => {
         </h2>
         <div className="border my-2 sm:my-4 border-gray-200"></div>
         <div className=" p-2 sm:p-4 md:p-6 ">
-          <form className="" onSubmit={handleSubmit}>
+          <form className="" onSubmit={handleSubmit(handleFormSubmit)}>
             <fieldset className="fieldset bg-base-200 w-xs sm:w-lg border-base-300 rounded-box text-lg border  p-5">
               <legend className="fieldset-legend">Login</legend>
 
               <label className="label font-semibold">Email</label>
               <input
-                name="email"
+               {...register('email')}
                 required
                 type="email"
                 className="input w-full"
@@ -55,12 +60,14 @@ const LogInPage = () => {
 
               <label className="label font-semibold">Password</label>
               <input
-                required
-                name="password"
+           
+                {...register('password',{required:'Password is required'})}
                 type="password"
+             
                 className="input w-full"
                 placeholder="Password"
               />
+              {errors}
 
               <button className="btn btn-neutral mt-4">Login</button>
             </fieldset>
