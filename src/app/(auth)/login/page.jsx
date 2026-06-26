@@ -1,9 +1,31 @@
-'use client'
+'use client';
 import Link from 'next/link';
 import React from 'react';
 
 const LogInPage = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+console.log(email,password)
+    if (password.length < 8) {
+      alert('Password must be at least 8 characters');
+      return;
+    }
+
+    if (!/[A-Z]/.test(password)) {
+      alert('Password must contain at least one uppercase letter');
+      return;
+    }
+
+    if (!/[0-9]/.test(password)) {
+      alert('Password must contain at least one number');
+      return;
+    }
+
+    alert('Login Success');
+  };
   return (
     <div className="container mx-auto  flex justify-center items-center my-6 sm:my-8 lg:my-10">
       <div className="p-2 sm:p-8  rounded-xl  bg-slate-100">
@@ -12,12 +34,14 @@ const LogInPage = () => {
         </h2>
         <div className="border my-2 sm:my-4 border-gray-200"></div>
         <div className=" p-2 sm:p-4 md:p-6 ">
-          <form className="">
+          <form className="" onSubmit={handleSubmit}>
             <fieldset className="fieldset bg-base-200 w-xs sm:w-lg border-base-300 rounded-box text-lg border  p-5">
               <legend className="fieldset-legend">Login</legend>
 
               <label className="label font-semibold">Email</label>
               <input
+                name="email"
+                required
                 type="email"
                 className="input w-full"
                 placeholder="Email"
@@ -25,6 +49,8 @@ const LogInPage = () => {
 
               <label className="label font-semibold">Password</label>
               <input
+                required
+                name="password"
                 type="password"
                 className="input w-full"
                 placeholder="Password"
@@ -32,9 +58,13 @@ const LogInPage = () => {
 
               <button className="btn btn-neutral mt-4">Login</button>
             </fieldset>
-            
           </form>
-          <p className='pt-2 sm:pt-3 md:pt-5 font-medium text-base sm:text-lg text-center'>Don't have an Account? <Link className='text-red-600 hover:underline ' href={'/register'}>Register</Link> </p>
+          <p className="pt-2 sm:pt-3 md:pt-5 font-medium text-base sm:text-lg text-center">
+            Don't have an Account?{' '}
+            <Link className="text-red-600 hover:underline " href={'/register'}>
+              Register
+            </Link>{' '}
+          </p>
         </div>
       </div>
     </div>
