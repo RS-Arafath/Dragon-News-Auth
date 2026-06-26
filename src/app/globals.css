@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  --font-sans: var(--font-poppins);
+  --font-mystery-quest: var(--font-MysteryQuest);
+}
