@@ -8,7 +8,7 @@ const LogInPage = () => {
 
     const email = e.target.email.value;
     const password = e.target.password.value;
-console.log(email,password)
+    console.log(email, password);
     if (password.length < 8) {
       alert('Password must be at least 8 characters');
       return;
@@ -25,7 +25,13 @@ console.log(email,password)
     }
 
     alert('Login Success');
+    const success = true; //if login succesfull
+
+    if (success) {
+      e.target.reset(); // Form reset
+    }
   };
+
   return (
     <div className="container mx-auto  flex justify-center items-center my-6 sm:my-8 lg:my-10">
       <div className="p-2 sm:p-8  rounded-xl  bg-slate-100">
