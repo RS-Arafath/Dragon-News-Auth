@@ -4,37 +4,42 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 const LogInPage = () => {
-  const {register,handleSubmit,reset,formState:{errors}}=useForm()
+  const {
+    register,
+    handleSubmit,
+   
+    formState: { errors },
+  } = useForm();
   const handleFormSubmit = (data) => {
     console.log(data);
-    console.log(errors);
+    console.log(errors,'error');
     // e.preventDefault();
 
     // const email = e.target.email.value;
     // const password = e.target.password.value;
     // console.log(email, password);
-//  if (data.password.length < 6) {
-//    alert('Password must be at least 8 characters');
-//    return;
-//  }
+    //  if (data.password.length < 6) {
+    //    alert('Password must be at least 8 characters');
+    //    return;
+    //  }
 
-//  if (!/[A-Z]/.test(data.password)) {
-//    alert('Password must contain at least one uppercase letter');
-//    return;
-//  }
+    //  if (!/[A-Z]/.test(data.password)) {
+    //    alert('Password must contain at least one uppercase letter');
+    //    return;
+    //  }
 
-//  if (!/[0-9]/.test(data.password)) {
-//    alert('Password must contain at least one number');
-//    return;
-//  }
+    //  if (!/[0-9]/.test(data.password)) {
+    //    alert('Password must contain at least one number');
+    //    return;
+    //  }
 
-    alert('Login Success');
+    // alert('Login Success');
 
-    const success = true;
+    // const success = true;
 
-    if (success) {
-      reset(); // 
-    }
+    // if (success) {
+    //   reset(); //
+    // }
   };
 
   return (
@@ -51,7 +56,7 @@ const LogInPage = () => {
 
               <label className="label font-semibold">Email</label>
               <input
-               {...register('email')}
+                {...register('email')}
                 required
                 type="email"
                 className="input w-full"
@@ -60,14 +65,13 @@ const LogInPage = () => {
 
               <label className="label font-semibold">Password</label>
               <input
-           
-                {...register('password',{required:'Password is required'})}
+                {...register('password', { required: 'Password is required' })}
                 type="password"
-             
                 className="input w-full"
                 placeholder="Password"
               />
-              {errors}
+          {errors.password && <p className='text-red-600 text-left'>{errors.password.message}
+          </p>}
 
               <button className="btn btn-neutral mt-4">Login</button>
             </fieldset>
