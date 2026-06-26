@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const LogInPage = () => {
@@ -13,14 +14,14 @@ const LogInPage = () => {
             <fieldset className="fieldset bg-base-200 w-xs sm:w-lg border-base-300 rounded-box text-lg border  p-5">
               <legend className="fieldset-legend">Login</legend>
 
-              <label className="label">Email</label>
+              <label className="label font-semibold">Email</label>
               <input
                 type="email"
                 className="input w-full"
                 placeholder="Email"
               />
 
-              <label className="label">Password</label>
+              <label className="label font-semibold">Password</label>
               <input
                 type="password"
                 className="input w-full"
@@ -29,7 +30,9 @@ const LogInPage = () => {
 
               <button className="btn btn-neutral mt-4">Login</button>
             </fieldset>
+            
           </form>
+          <p className='pt-2 sm:pt-3 md:pt-5 font-medium text-base sm:text-lg text-center'>Don't have an Account? <Link className='text-red-600 hover:underline ' href={'/register'}>Register</Link> </p>
         </div>
       </div>
     </div>
