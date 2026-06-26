@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 
 const LogInPage = () => {
+  
   return (
     <div className="container mx-auto  flex justify-center items-center my-6 sm:my-8 lg:my-10">
       <div className="p-2 sm:p-8  rounded-xl  bg-slate-100">
