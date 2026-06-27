@@ -45,7 +45,7 @@ const RegisterPage = () => {
   };
   //console.log(errors, 'error');
   //console.log(watch('email'));
-  console.log(watch('password'));
+  //console.log(watch('password'));
   return (
     <div className="container mx-auto  flex justify-center items-center my-6 sm:my-8 lg:my-10">
       <div className="p-2 sm:p-8  rounded-xl  bg-slate-100">
@@ -57,7 +57,22 @@ const RegisterPage = () => {
           <form className="" onSubmit={handleSubmit(handleFormSubmit)}>
             <fieldset className="fieldset bg-base-200 w-xs sm:w-lg border-base-300 rounded-box text-lg border  p-5">
               <legend className="fieldset-legend">Login</legend>
+              {/* ~~~name~~~ */}
+              <label className="label font-semibold">Name</label>
+              <input
+                {...register('name', { required: 'name is required' })}
+                type="text"
+                className="input w-full"
+                placeholder="Enter your name"
+              />
 
+              {errors.name && (
+                <p className="text-red-600 text-left italic  text-xs">
+                  {errors.name.message}
+                </p>
+              )}
+
+              {/* ~~~email~~~ */}
               <label className="label font-semibold">Email</label>
               <input
                 {...register('email', { required: 'Email is required' })}
@@ -65,12 +80,27 @@ const RegisterPage = () => {
                 className="input w-full"
                 placeholder="Email"
               />
-
               {errors.email && (
-                <p className="text-red-600 text-left italic">
+                <p className="text-red-600 text-left italic text-xs">
                   {errors.email.message}
                 </p>
               )}
+
+              {/* ~~~url~~~ */}
+              <label className="label font-semibold">Photo url</label>
+              <input
+                {...register('photo', { required: 'Photo url is required' })}
+                type="text"
+                className="input w-full"
+                placeholder="Enter your photo url"
+              />
+
+              {errors.photo && (
+                <p className="text-red-600 text-left italic  text-xs">
+                  {errors.photo.message}
+                </p>
+              )}
+
               <label className="label font-semibold">Password</label>
               <input
                 {...register('password', { required: 'Password is required' })}
@@ -79,7 +109,7 @@ const RegisterPage = () => {
                 placeholder="Password"
               />
               {errors.password && (
-                <p className="text-red-600 text-left italic">
+                <p className="text-red-600 text-left italic  text-xs">
                   {errors.password.message}
                 </p>
               )}
