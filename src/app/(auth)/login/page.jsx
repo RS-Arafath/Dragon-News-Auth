@@ -1,4 +1,5 @@
 'use client';
+import { Description } from '@heroui/react';
 import Link from 'next/link';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -64,6 +65,7 @@ const LogInPage = () => {
                 className="input w-full"
                 placeholder="Email"
               />
+             
               {errors.email && (
                 <p className="text-red-600 text-left italic">
                   {errors.email.message}
