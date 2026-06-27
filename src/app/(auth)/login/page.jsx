@@ -34,16 +34,16 @@ const LogInPage = () => {
     //    return;
     //  }
 
-    // alert('Login Success');
+    alert('Login Success');
 
-    // const success = true;
+    const success = true;
 
-    // if (success) {
-    //   reset(); //
-    // }
+    if (success) {
+      reset(); //
+    }
   };
   //console.log(errors, 'error');
-  console.log(watch('email'));
+  //console.log(watch('email'));
   console.log(watch('password'));
   return (
     <div className="container mx-auto  flex justify-center items-center my-6 sm:my-8 lg:my-10">
