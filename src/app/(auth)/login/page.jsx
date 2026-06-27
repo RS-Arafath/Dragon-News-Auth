@@ -19,20 +19,20 @@ const LogInPage = () => {
     // const email = e.target.email.value;
     // const password = e.target.password.value;
     // console.log(email, password);
-    //  if (data.password.length < 6) {
-    //    alert('Password must be at least 8 characters');
-    //    return;
-    //  }
+     if (data.password.length < 6) {
+       alert('Password must be at least 8 characters');
+       return;
+     }
 
-    //  if (!/[A-Z]/.test(data.password)) {
-    //    alert('Password must contain at least one uppercase letter');
-    //    return;
-    //  }
+     if (!/[A-Z]/.test(data.password)) {
+       alert('Password must contain at least one uppercase letter');
+       return;
+     }
 
-    //  if (!/[0-9]/.test(data.password)) {
-    //    alert('Password must contain at least one number');
-    //    return;
-    //  }
+     if (!/[0-9]/.test(data.password)) {
+       alert('Password must contain at least one number');
+       return;
+     }
 
     alert('Login Success');
 
