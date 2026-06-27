@@ -47,7 +47,7 @@ const RegisterPage = () => {
   //console.log(watch('email'));
   //console.log(watch('password'));
   return (
-    <div className="container mx-auto  flex justify-center items-center my-6 sm:my-8 lg:my-10">
+    <div className="container mx-auto  flex justify-center  py-1 sm:py-3 md:py-5 items-center my-6 sm:my-8 lg:my-10">
       <div className="p-2 sm:p-8  rounded-xl  bg-slate-100">
         <h2 className="font-bold text-lg sm:text-2xl  text-left">
           Register Your Account
@@ -120,7 +120,7 @@ const RegisterPage = () => {
           <p className="pt-2 sm:pt-3 md:pt-5 font-medium text-base sm:text-lg text-center">
             Already have an account?{' '}
             <Link className="text-blue-600 hover:underline " href={'/login'}>
-              Register
+              Login
             </Link>{' '}
           </p>
         </div>
