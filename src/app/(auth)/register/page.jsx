@@ -1,4 +1,5 @@
 'use client';
+import { authClient } from '@/lib/auth-client';
 import { Description } from '@heroui/react';
 import Link from 'next/link';
 import React from 'react';
@@ -12,40 +13,46 @@ const RegisterPage = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const handleFormSubmit = (data) => {
-    console.log(data);
-
-    // e.preventDefault();
-
-    // const email = e.target.email.value;
-    // const password = e.target.password.value;
-    // console.log(email, password);
+  const handleFormSubmit = async (data) => {
+    //console.log(data);
+const{email,password,photo,name}=data
+   
     if (data.password.length < 6) {
       alert('Password must be at least 8 characters');
       return;
     }
 
-    if (!/[A-Z]/.test(data.password)) {
+    if (!/[A-Z]/.test(password)) {
       alert('Password must contain at least one uppercase letter');
       return;
     }
 
-    if (!/[0-9]/.test(data.password)) {
+    if (!/[0-9]/.test(password)) {
       alert('Password must contain at least one number');
       return;
     }
 
-    alert('Login Success');
+    alert('Register Successfully');
 
     const success = true;
 
     if (success) {
       reset(); //
     }
+    //signup connection
+    const { data:res, error } = await authClient.signUp.email({
+      name: name, // required
+      email: email, // required
+      password: password, // required
+      image: photo,
+      callbackURL: '/',
+    });
+    console.log('res and error',res,error);
   };
   //console.log(errors, 'error');
   //console.log(watch('email'));
   //console.log(watch('password'));
+
   return (
     <div className="container mx-auto  flex justify-center  py-1 sm:py-3 md:py-5 items-center my-6 sm:my-8 lg:my-10">
       <div className="p-2 sm:p-8  rounded-xl  bg-slate-100">
@@ -56,7 +63,7 @@ const RegisterPage = () => {
         <div className=" p-2 sm:p-4 md:p-6 ">
           <form className="" onSubmit={handleSubmit(handleFormSubmit)}>
             <fieldset className="fieldset bg-base-200 w-xs sm:w-lg border-base-300 rounded-box text-lg border  p-5">
-              <legend className="fieldset-legend">Login</legend>
+              <legend className="fieldset-legend"> Register</legend>
               {/* ~~~name~~~ */}
               <label className="label font-semibold">Name</label>
               <input
