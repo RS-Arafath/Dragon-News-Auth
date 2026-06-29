@@ -39,14 +39,14 @@ const RegisterPage = () => {
       image: image,
       callbackURL: '/',
     });
-    console.log('res and error',res,error);
+    console.log('res and error', res, error);
 
     if (error) {
       alert(error.message || 'Registration failed. Please try again.');
       return;
     }
 
-    // 
+    //
     alert('Registered Successfully!');
     reset();
   };
