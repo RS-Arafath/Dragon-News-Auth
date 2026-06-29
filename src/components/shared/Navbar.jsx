@@ -9,7 +9,10 @@ import { authClient } from '@/lib/auth-client';
 
 const Navbar = () => {
   const { data: session } = authClient.useSession();
- console.log('seasson', session);
+  const user = session?.user;
+  console.log(user?.image);
+  console.log(user);
+  
   return (
     <div
       className="flex justify-between items-center my-8 font-mystery-quest sticky top-0 left-0 py-1 w-full z-50 
@@ -33,8 +36,14 @@ shadow-none"
         </ul>
       </div>
       <div className="flex gap-1 sm:gap-2 px-2 justify-center items-center">
-        <CgProfile className="text-3xl" />
-        {/*  <Image src={userAvatar} width={40} alt="user_img"></Image> */}
+        {/* <CgProfile className="text-3xl" /> */}
+        <Image
+          src={user?.image || userAvatar}
+          width={30}
+          height={30}
+          alt="user_img"
+          className="rounded-full object-cover w-10 h-10"
+        ></Image>
 
         <button className="btn bg-black px-2  sm:px-5  text-white">
           <Link href={'/login'}>LogIn</Link>

@@ -94,10 +94,20 @@ const RegisterPage = () => {
               {/* ✅ Fixed: 'photo' → 'image' */}
               <label className="label font-semibold">Photo URL</label>
               <input
-                {...register('image', { required: 'Photo URL is required' })}
-                type="text"
-                className="input w-full"
-                placeholder="Enter your photo URL"
+                {...register('image', {
+                  required: 'Photo URL is required',
+                  validate: (value) => {
+                    try {
+                      new URL(value);
+                      return true;
+                    } catch {
+                      return 'Please enter a valid URL';
+                    }
+                  },
+                })}
+                type="url"
+                className="input w-full "
+                placeholder="https://example.com/your-photo.jpg"
               />
               {errors.image && (
                 <p className="text-red-600 text-left italic text-xs">
