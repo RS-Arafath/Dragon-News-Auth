@@ -2,10 +2,13 @@
 import { authClient } from '@/lib/auth-client';
 import { Description } from '@heroui/react';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import AnimatedButton from '@/components/ui/animated-button';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+
 const LogInPage = () => {
+  const [isShowPassword, setIsShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
@@ -80,19 +83,30 @@ const LogInPage = () => {
                 </p>
               )}
               <label className="label font-semibold">Password</label>
-              <input
-                {...register('password', { required: 'Password is required' })}
-                type="password"
-                className="input w-full"
-                placeholder="Password"
-              />
+              <div className="relative">
+                <input
+                  {...register('password', {
+                    required: 'Password is required',
+                  })}
+                  type={isShowPassword ? 'text' : 'password'}
+                  className="input w-full pr-10"
+                  placeholder="Password"
+                />
+
+                <span
+                  className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-600"
+                  onClick={() => setIsShowPassword(!isShowPassword)}
+                >
+                  {isShowPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
               {errors.password && (
                 <p className="text-red-600 text-left italic">
                   {errors.password.message}
                 </p>
               )}
 
-              <AnimatedButton className="w-xs mx-auto my-8 cursor-pointer hover:scale-105 transform transition duration-200 text-lg font-bold hover:bg-gray-100">
+              <AnimatedButton className="w-30 mx-auto my-8 cursor-pointer hover:scale-105 transform transition duration-200 text-lg font-bold bg-red-600 hover:bg-red-700 text-white">
                 Login
               </AnimatedButton>
             </fieldset>

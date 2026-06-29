@@ -57,8 +57,9 @@ shadow-none"
             }}
             className="btn bg-red-600 hover:bg-red-700 px-2  sm:px-5  text-white"
           >
-            <Link href={'/login'}>LogOut</Link>
-          </button>
+            <Link href={'/'}>LogOut</Link>
+            </button>
+            
         </div>
       ) : (
         <button className="btn bg-black px-2  sm:px-5  text-white font-sans">

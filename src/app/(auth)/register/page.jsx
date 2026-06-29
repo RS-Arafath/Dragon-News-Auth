@@ -1,10 +1,12 @@
 'use client';
+import AnimatedButton from '@/components/ui/animated-button';
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 const RegisterPage = () => {
+  const [isShowPassword, setIsShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
@@ -117,19 +119,31 @@ const RegisterPage = () => {
 
               {/* Password */}
               <label className="label font-semibold">Password</label>
-              <input
-                {...register('password', { required: 'Password is required' })}
-                type="password"
-                className="input w-full"
-                placeholder="Password"
-              />
+              <div className="relative">
+                <input
+                  {...register('password', {
+                    required: 'Password is required',
+                  })}
+                  type={isShowPassword ? 'text' : 'password'}
+                  className="input w-full"
+                  placeholder="Password"
+                />
+                <span
+                  className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-600"
+                  onClick={() => setIsShowPassword(!isShowPassword)}
+                >
+                  {isShowPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
               {errors.password && (
                 <p className="text-red-600 text-left italic text-xs">
                   {errors.password.message}
                 </p>
               )}
 
-              <button className="btn btn-neutral mt-4">Register</button>
+              <AnimatedButton className="w-30 mx-auto my-8 cursor-pointer hover:scale-105 transform transition duration-200 text-lg font-bold bg-red-600 hover:bg-red-700 text-white">
+              Register
+              </AnimatedButton>
             </fieldset>
           </form>
 
