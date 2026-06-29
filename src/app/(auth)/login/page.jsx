@@ -4,7 +4,7 @@ import { Description } from '@heroui/react';
 import Link from 'next/link';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-
+import AnimatedButton from '@/components/ui/animated-button';
 const LogInPage = () => {
   const {
     register,
@@ -13,7 +13,7 @@ const LogInPage = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const handleFormSubmit = async(data) => {
+  const handleFormSubmit = async (data) => {
     const { email, password } = data;
 
     // e.preventDefault();
@@ -42,14 +42,14 @@ const LogInPage = () => {
       callbackURL: 'http://localhost:3000/category/01',
     });
 
-     if (error) {
-       alert(error.message || 'Login failed. Please try again.');
-       return;
-     }
+    if (error) {
+      alert(error.message || 'Login failed. Please try again.');
+      return;
+    }
 
-     //
-     alert('Login Successfully!');
-     reset();
+    //
+    alert('Login Successfully!');
+    reset();
   };
   //console.log(errors, 'error');
   //console.log(watch('email'));
@@ -92,7 +92,9 @@ const LogInPage = () => {
                 </p>
               )}
 
-              <button className="btn btn-neutral mt-4">Login</button>
+              <AnimatedButton className="w-xs mx-auto my-8 cursor-pointer hover:scale-105 transform transition duration-200 text-lg font-bold hover:bg-gray-100">
+                Login
+              </AnimatedButton>
             </fieldset>
           </form>
           <p className="pt-2 sm:pt-3 md:pt-5 font-medium text-base sm:text-lg text-center">

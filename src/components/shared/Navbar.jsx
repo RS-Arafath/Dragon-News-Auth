@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -8,11 +8,11 @@ import NavLink from './NavLink';
 import { authClient } from '@/lib/auth-client';
 
 const Navbar = () => {
-  const { data: session } = authClient.useSession();
+  const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
   console.log(user?.image);
   console.log(user);
-  
+
   return (
     <div
       className="flex justify-between items-center my-8  sticky top-0 left-0 py-1 w-full z-50 
@@ -35,10 +35,14 @@ shadow-none"
           </li>
         </ul>
       </div>
-      {user ? (
+      {isPending ? (
+        <span className="loading loading-bars loading-xs flex justify-center items-center mx-10 md:mx-20 text-red-500"></span>
+      ) : user ? (
         <div className="flex gap-1 sm:gap-2 px-2 justify-center items-center">
           {/* <CgProfile className="text-3xl" /> */}
-          <h2 className="font-semibold font-poppins">{user?.name}</h2>
+          <h2 className="font-semibold font-poppins text-xs sm:text-base">
+            {user?.name}
+          </h2>
           <Image
             src={user?.image || userAvatar}
             width={30}
@@ -47,13 +51,18 @@ shadow-none"
             className="rounded-full object-cover w-10 h-10"
           ></Image>
 
-          <button className="btn bg-red-600 hover:bg-red-700 px-2  sm:px-5  text-white">
+          <button
+            onClick={async () => {
+              await authClient.signOut();
+            }}
+            className="btn bg-red-600 hover:bg-red-700 px-2  sm:px-5  text-white"
+          >
             <Link href={'/login'}>LogOut</Link>
           </button>
         </div>
       ) : (
         <button className="btn bg-black px-2  sm:px-5  text-white font-sans">
-          <Link href={'/login'}>LogOut</Link>
+          <Link href={'/login'}>Login</Link>
         </button>
       )}
     </div>
