@@ -37,6 +37,7 @@ shadow-none"
       </div>
       <div className="flex gap-1 sm:gap-2 px-2 justify-center items-center">
         {/* <CgProfile className="text-3xl" /> */}
+        <h2 className='font-semibold'>{user?.name }</h2>
         <Image
           src={user?.image || userAvatar}
           width={30}
