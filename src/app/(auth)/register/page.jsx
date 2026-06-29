@@ -141,9 +141,7 @@ const RegisterPage = () => {
                 </p>
               )}
 
-              <AnimatedButton className="w-30 mx-auto my-8 cursor-pointer hover:scale-105 transform transition duration-200 text-lg font-bold bg-red-600 hover:bg-red-700 text-white">
-              Register
-              </AnimatedButton>
+             
             </fieldset>
           </form>
 
