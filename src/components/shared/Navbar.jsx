@@ -1,11 +1,15 @@
+'use client'
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { CgProfile } from 'react-icons/cg';
 import userAvatar from '@/assets/user.png';
 import NavLink from './NavLink';
+import { authClient } from '@/lib/auth-client';
 
 const Navbar = () => {
+  const { data: session } = authClient.useSession();
+ console.log('seasson', session);
   return (
     <div
       className="flex justify-between items-center my-8 font-mystery-quest sticky top-0 left-0 py-1 w-full z-50 
