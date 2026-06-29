@@ -51,6 +51,14 @@ shadow-none"
             className="rounded-full object-cover w-10 h-10"
           ></Image>
 
+          <button
+            onClick={async () => {
+              await authClient.signOut();
+            }}
+            className="btn bg-red-600 hover:bg-red-700 px-2  sm:px-5  text-white"
+          >
+            <Link href={'/'}>LogOut</Link>
+            </button>
             
         </div>
       ) : (
