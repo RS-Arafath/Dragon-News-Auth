@@ -11,6 +11,11 @@ import SocialConnect from './SocialConnect';
 import { authClient } from '@/lib/auth-client';
 
 const RightSideBar = () => {
+  const handleGithubSignin = async () => {
+     const data = await authClient.signIn.social({
+       provider: 'github',
+     });
+  }
   const handleGoogleSignin = async () => {
     const data = await authClient.signIn.social({
       provider: 'google',
@@ -75,7 +80,10 @@ const RightSideBar = () => {
             Login with Facebook
           </button>
           {/* GitHub */}
-          <button className="btn bg-black text-white border-black w-full">
+          <button
+            onClick={handleGithubSignin}
+            className="btn bg-black text-white border-black w-full"
+          >
             <svg
               aria-label="GitHub logo"
               width="16"
