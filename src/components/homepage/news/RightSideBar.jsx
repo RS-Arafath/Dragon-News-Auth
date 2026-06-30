@@ -20,8 +20,9 @@ const RightSideBar = () => {
     const data = await authClient.signIn.social({
       provider: 'google',
     });
-    console.log('data signin',data);
+   
   };
+
   return (
     <div className=" bg-gray-100  p-4 rounded ">
       <div>
