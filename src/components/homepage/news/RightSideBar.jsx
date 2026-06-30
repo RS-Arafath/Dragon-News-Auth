@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -7,8 +8,15 @@ import enterTainment from '@/assets/enterTainment.jpg';
 import underConstructionPage from '@/app/(main)/underConstraction/page';
 import DailyFeature from '../DailyFeature';
 import SocialConnect from './SocialConnect';
+import { authClient } from '@/lib/auth-client';
 
 const RightSideBar = () => {
+  const handleGoogleSignin = async () => {
+    const data = await authClient.signIn.social({
+      provider: 'google',
+    });
+    console.log('data signin',data);
+  };
   return (
     <div className=" bg-gray-100  p-4 rounded ">
       <div>
@@ -16,7 +24,10 @@ const RightSideBar = () => {
           Login with
         </h2>
         <div className="flex flex-col gap-3">
-          <button className="btn bg-white text-black border-[#e5e5e5] w-full">
+          <button
+            onClick={handleGoogleSignin}
+            className="btn bg-white text-black border-[#e5e5e5] w-full"
+          >
             <svg
               aria-label="Google logo"
               width="16"
