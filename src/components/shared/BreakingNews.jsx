@@ -3,7 +3,7 @@ import AnimatedButton from '@/components/ui/animated-button';
 import { getNewsByCategoryId } from '@/lib/data';
 
 
-const categoryIds = ['01', '02', '03','04','05']; // 
+const categoryIds = ['01', '02', '03','04','05']; 
 
 const BreakingNews = async () => {
   const newsArrays = await Promise.all(
