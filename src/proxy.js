@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 // This function can be marked `async` if using `await` inside
 export function proxy(request) {
-  return NextResponse;
+  return NextResponse.next();
 }
 
 // Alternatively, you can use a default export:
@@ -10,5 +10,5 @@ export function proxy(request) {
 
 export const config = {
   //matcher page doesnot show in ui
-  matcher: ['/career','/about-us'],
+  matcher: ['/career'],
 };
