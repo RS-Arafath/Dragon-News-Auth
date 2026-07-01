@@ -12,6 +12,7 @@
     "@better-auth/mongo-adapter": "^1.6.22",
     "@heroui/react": "^3.2.1",
     "@heroui/styles": "^3.2.1",
+    "@vercel/analytics": "^2.0.1",
     "better-auth": "^1.6.22",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
