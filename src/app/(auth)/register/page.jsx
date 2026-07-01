@@ -2,6 +2,7 @@
 import AnimatedButton from '@/components/ui/animated-button';
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
@@ -51,6 +52,7 @@ const RegisterPage = () => {
     //
     alert('Registered Successfully!');
     reset();
+    redirect('/category/01');
   };
 
   return (

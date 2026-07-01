@@ -1,48 +1,44 @@
 'use client';
 import { authClient } from '@/lib/auth-client';
-import { Description } from '@heroui/react';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import AnimatedButton from '@/components/ui/animated-button';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const LogInPage = () => {
+
+  const searchParams = useSearchParams();
   const [isShowPassword, setIsShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
     reset,
-    watch,
     formState: { errors },
   } = useForm();
+
   const handleFormSubmit = async (data) => {
     const { email, password } = data;
 
-    // e.preventDefault();
-
-    // const email = e.target.email.value;
-    // const password = e.target.password.value;
-    // console.log(email, password);
-    if (data.password.length < 8) {
+    if (password.length < 8) {
       alert('Password must be at least 8 characters');
       return;
     }
-
-    if (!/[A-Z]/.test(data.password)) {
+    if (!/[A-Z]/.test(password)) {
       alert('Password must contain at least one uppercase letter');
       return;
     }
-
-    if (!/[0-9]/.test(data.password)) {
+    if (!/[0-9]/.test(password)) {
       alert('Password must contain at least one number');
       return;
     }
+
     const { data: res, error } = await authClient.signIn.email({
-      email: email,
-      password: password,
+      email,
+      password,
       rememberMe: true,
-      callbackURL: 'http://localhost:3000/category/01',
+      callbackURL: '/category/01',
     });
 
     if (error) {
@@ -50,23 +46,26 @@ const LogInPage = () => {
       return;
     }
 
-    //
     alert('Login Successfully!');
     reset();
+     redirect('/category/01');
   };
-  //console.log(errors, 'error');
-  //console.log(watch('email'));
-  //console.log(watch('password'));
+
   return (
-    <div className="container mx-auto  flex justify-center items-center my-6 sm:my-8 lg:my-10">
-      <div className="p-2 sm:p-8  rounded-xl  bg-slate-100">
-        <h2 className="font-bold text-lg sm:text-2xl  text-left">
+    <div className="container mx-auto flex flex-col justify-center items-center my-6 sm:my-8 lg:my-10">
+      {searchParams.get('message') === 'login-required' && (
+        <div className="mb-4 rounded-lg border border-yellow-300 bg-yellow-100 px-4 py-3 text-yellow-800">
+          🔒 You need to log in to view this page.
+        </div>
+      )}
+      <div className="p-2 sm:p-8 rounded-xl bg-slate-100">
+        <h2 className="font-bold text-lg sm:text-2xl text-left">
           Login Your Account
         </h2>
         <div className="border my-2 sm:my-4 border-gray-200"></div>
-        <div className=" p-2 sm:p-4 md:p-6 ">
-          <form className="" onSubmit={handleSubmit(handleFormSubmit)}>
-            <fieldset className="fieldset bg-base-200 w-xs sm:w-lg border-base-300 rounded-box text-lg border  p-5">
+        <div className="p-2 sm:p-4 md:p-6">
+          <form onSubmit={handleSubmit(handleFormSubmit)}>
+            <fieldset className="fieldset bg-base-200 w-xs sm:w-lg border-base-300 rounded-box text-lg border p-5">
               <legend className="fieldset-legend">Login</legend>
 
               <label className="label font-semibold">Email</label>
@@ -76,12 +75,12 @@ const LogInPage = () => {
                 className="input w-full"
                 placeholder="Email"
               />
-
               {errors.email && (
                 <p className="text-red-600 text-left italic">
                   {errors.email.message}
                 </p>
               )}
+
               <label className="label font-semibold">Password</label>
               <div className="relative">
                 <input
@@ -92,7 +91,6 @@ const LogInPage = () => {
                   className="input w-full pr-10"
                   placeholder="Password"
                 />
-
                 <span
                   className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-600"
                   onClick={() => setIsShowPassword(!isShowPassword)}
@@ -113,9 +111,9 @@ const LogInPage = () => {
           </form>
           <p className="pt-2 sm:pt-3 md:pt-5 font-medium text-base sm:text-lg text-center">
             Don't have an Account?{' '}
-            <Link className="text-red-600 hover:underline " href={'/register'}>
+            <Link className="text-red-600 hover:underline" href={'/register'}>
               Register
-            </Link>{' '}
+            </Link>
           </p>
         </div>
       </div>
