@@ -24,5 +24,5 @@ export async function proxy(request) {
 
 export const config = {
   //matcher page doesnot show in ui
-  matcher: ['/career'],
+  matcher: ['/career','/news/:path*'],
 };
