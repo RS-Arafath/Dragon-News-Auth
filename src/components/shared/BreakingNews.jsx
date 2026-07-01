@@ -1,17 +1,30 @@
 import Marquee from 'react-fast-marquee';
 import AnimatedButton from '@/components/ui/animated-button';
-const BreakingNews = () => {
+import { getNewsByCategoryId } from '@/lib/data';
+
+
+const categoryIds = ['01', '02', '03','04','05']; // 
+
+const BreakingNews = async () => {
+  const newsArrays = await Promise.all(
+    categoryIds.map((id) => getNewsByCategoryId(id)),
+  );
+
+  
+  const allNews = newsArrays.flat();
+
   return (
-    <div className=" flex justify-between  items-center bg-gray-200  p-3">
+    <div className="flex justify-between items-center bg-gray-200 p-3">
       <AnimatedButton className="btn bg-red-600 text-white">
+        
         Breaking News
       </AnimatedButton>
       <Marquee direction="left" pauseOnHover={true}>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae qui
-        dolores quibusdam, deleniti quae sit, ullam accusantium atque vero ipsa
-        perspiciatis a vel soluta repellendus non nam optio nostrum distinctio
-        consequatur iure? Dicta recusandae ad reprehenderit quae corrupti, error
-        nesciunt?
+        {allNews.map((item) => (
+          <span key={item._id} className="mx-6 whitespace-nowrap font-medium">
+            {item.title}
+          </span>
+        ))}
       </Marquee>
     </div>
   );
