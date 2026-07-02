@@ -3,9 +3,7 @@ dns.setServers(['8.8.8.8', '8.8.4.4']);
 import { Analytics } from '@vercel/analytics/next';
 import { Inter, Poppins, Black_Ops_One, Mystery_Quest } from 'next/font/google';
 import './globals.css';
-import Header from '@/components/shared/Header';
-import Navbar from '@/components/shared/Navbar';
-import FooterPage from '@/components/shared/Footer';
+
 
 const poppins = Poppins({
   variable: '--font-poppins',
