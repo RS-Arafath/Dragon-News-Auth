@@ -1,10 +1,7 @@
 import Marquee from 'react-fast-marquee';
 import AnimatedButton from '@/components/ui/animated-button';
 import { getNewsByCategoryId } from '@/lib/data';
-
-
 const categoryIds = ['01', '02', '03','04','05','06']; 
-
 const BreakingNews = async () => {
   const newsArrays = await Promise.all(
     categoryIds.map((id) => getNewsByCategoryId(id)),
