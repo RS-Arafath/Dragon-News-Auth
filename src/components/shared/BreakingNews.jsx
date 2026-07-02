@@ -15,8 +15,7 @@ const BreakingNews = async () => {
 
   return (
     <div className="flex justify-between items-center bg-gray-200 p-3">
-      <AnimatedButton className="btn bg-red-600 text-white">
-        
+      <AnimatedButton className="btn bg-red-600 text-white">    
         Breaking News
       </AnimatedButton>
       <Marquee direction="left" pauseOnHover={true}>
