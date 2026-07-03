@@ -13,7 +13,7 @@ import { authClient } from '@/lib/auth-client';
 const RightSideBar = () => {
   const handleGithubSignin = async () => {
      const data = await authClient.signIn.social({
-       provider: 'github',
+     
      });
   }
   const handleGoogleSignin = async () => {
