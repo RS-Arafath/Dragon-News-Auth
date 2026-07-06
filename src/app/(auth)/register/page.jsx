@@ -67,7 +67,12 @@ const RegisterPage = () => {
 
               {/* Name */}
               <label className="label font-semibold">Name</label>
-             
+              <input
+                {...register('name', { required: 'Name is required' })}
+                type="text"
+                className="input w-full"
+                placeholder="Enter your name"
+              />
               {errors.name && (
                 <p className="text-red-600 text-left italic text-xs">
                   {errors.name.message}
