@@ -63,7 +63,7 @@ const RegisterPage = () => {
         <div className="p-2 sm:p-4 md:p-6">
           <form onSubmit={handleSubmit(handleFormSubmit)}>
             <fieldset className="fieldset bg-base-200 w-xs sm:w-lg border-base-300 rounded-box text-lg border p-5">
-            
+              <legend className="fieldset-legend">Register</legend>
 
               {/* Name */}
               <label className="label font-semibold">Name</label>
