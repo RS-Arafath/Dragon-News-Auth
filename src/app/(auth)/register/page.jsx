@@ -59,7 +59,7 @@ const RegisterPage = () => {
     <div className="container mx-auto flex justify-center py-1 sm:py-3 md:py-5 items-center my-6 sm:my-8 lg:my-10">
       <div className="p-2 sm:p-8 rounded-xl bg-slate-100">
        
-        <div className="border my-3 sm:my-4 border-gray-200"></div>
+        <div className="border my-2 sm:my-4 border-gray-200"></div>
         <div className="p-2 sm:p-4 md:p-6">
           <form onSubmit={handleSubmit(handleFormSubmit)}>
             <fieldset className="fieldset bg-base-200 w-xs sm:w-lg border-base-300 rounded-box text-lg border p-5">
