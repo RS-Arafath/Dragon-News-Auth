@@ -31,7 +31,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html
-      data-theme="light"
+      data-theme="ligh"
       lang="en"
       className={`${poppins.variable} ${mysteryQuest.variable} h-full antialiased`}
     >
