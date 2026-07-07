@@ -9,7 +9,7 @@ import FooterPage from '@/components/shared/Footer';
 
 const poppins = Poppins({
   variable: '--font-poppins',
-  subsets: ['latin'],
+ 
   weight: ['400', '500', '600', '800'],
 });
 const mysteryQuest = Mystery_Quest({
