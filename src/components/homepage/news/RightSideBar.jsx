@@ -80,7 +80,7 @@ const RightSideBar = () => {
             </svg>
             Login with Facebook
           </button>
-          {/* GitHub */}
+          {/* GitHub   */}
           <button
             onClick={handleGithubSignin}
             className="btn bg-black text-white border-black w-full"
