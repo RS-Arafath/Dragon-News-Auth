@@ -28,7 +28,7 @@ const RightSideBar = () => {
       <div>
         <h2 className="text-xl sm:text-2xl text-gray-800 mb-5 font-bold">
           Login with
-        </h2>
+     
         <div className="flex flex-col gap-3">
           <button
             onClick={handleGoogleSignin}
