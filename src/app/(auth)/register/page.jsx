@@ -65,7 +65,7 @@ const RegisterPage = () => {
             <fieldset className="fieldset bg-base-200 w-xs sm:w-lg border-base-300 rounded-box text-lg border p-5">
               <legend className="fieldset-legend">Register</legend>
 
-              {/* Name   */}
+              {/* Name */}
               <label className="label font-semibold">Name</label>
               <input
                 {...register('name', { required: 'Name is required' })}
